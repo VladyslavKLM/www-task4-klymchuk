@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title>Sign up</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+
+    <script>
+        function registration() {
+            var fullName = $("#fullName").val();
+            var email = $("#email").val();
+            var phoneCountry = $("#phoneCountry").val();
+            var phone = $("#phone").val();
+            var job = $("#job").val();
+            var password = $("#password").val();
+            var confirm = $("#confirm").val();
+
+            $.post("registration", {
+                "fullName": fullName,
+                "email": email,
+                "phoneCountry": phoneCountry,
+                "phone": phone,
+                "job": job,
+                "password": password,
+                "confirm": confirm
+            })
+                    .done(function (data) {
+                        $("#result").empty().append(data);
+                    });
+        }
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h2>Registration:</h2>
+            <form class="" method="post" action="">
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-user fa-lg" aria-hidden="true"></i></div>
+                        </div>
+                        <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Full name">
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></div>
+                        </div>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="email"
+                               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+.[a-zA-Z]{2,4}$" >
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></div>
+                        </div>
+                        <select class="custom-select" id="phoneCountry" name="phoneCountry">
+                            <option selected>+380</option>
+                            <option value="1">+971</option>
+                        </select>
+                        <div class="input-group-append">
+                            <input type="text" class="form-control" aria-label="Text input with dropdown button"
+                                   id="phone" name="phone"  placeholder="xx xxx xx xx"
+                                   pattern="^\(?(\d{2})\)?[- ()*]?(\d{3})[- ()*]?(\d{2})?[- ()*]?(\d{2})$">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-building fa-lg" aria-hidden="true"></i></div>
+                        </div>
+                        <select class="form-control" name="job" id="job">
+                            <option>Default select</option>
+                            <option>Administration</option>
+                            <option>Computing</option>
+                            <option>Building</option>
+                            <option>Design</option>
+                            <option>Education</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></div>
+                        </div>
+                        <input type="password" class="form-control" name="password" id="password"
+                               placeholder="Create password"/>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></div>
+                        </div>
+                        <input type="password" class="form-control" name="confirm" id="confirm"
+                               placeholder="Repeat password"/>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <p><input type="button" class="btn btn-primary" value="Create Account" onclick="registration();"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <div id="result"></div>
+</div>
+</body>
