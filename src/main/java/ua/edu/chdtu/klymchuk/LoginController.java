@@ -22,7 +22,7 @@ public class LoginController {
         System.out.println("LoginController PostMapping");
 
         UserManager manager = new UserManager();
-        User user = manager.select(username, password.hashCode());
+        User user = manager.select(username, password);
 
         return user != null ? "Sign in OK" : "Not sign in";
     }

@@ -16,7 +16,7 @@ public class UserManager {
         connector = DBUtils.getInstance();
     }
 
-    public User select(String email, int password) {
+    public User select(String email, String password) {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         try (Connection con = connector.getConnection()) {
@@ -54,7 +54,7 @@ public class UserManager {
             pstmt.setObject(2, user.getEmail());
             pstmt.setObject(3, user.getPhoneNumber());
             pstmt.setObject(4, user.getJob());
-            pstmt.setObject(5, user.getPassword());
+            pstmt.setString(5, user.getPassword());
 
             if (pstmt.executeUpdate() > 0) {
                 rs = pstmt.getGeneratedKeys();

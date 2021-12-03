@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `web-task4`.users
     email       VARCHAR(50)   NOT NULL,
     phone       VARCHAR(20)   NOT NULL,
     job         VARCHAR(20)   NOT NULL,
-    password    INT		      NOT NULL,
+    password    VARCHAR(20)	  NOT NULL,
     PRIMARY KEY (id),
     UNIQUE (email)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

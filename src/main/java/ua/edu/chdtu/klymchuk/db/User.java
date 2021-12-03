@@ -7,12 +7,12 @@ public class User {
     private String email;
     private String phoneNumber;
     private String job;
-    private int password;
+    private String password;
 
     public User() {
     }
 
-    public User(int id, String fullName, String email, String phoneNumber, String job, int password) {
+    public User(int id, String fullName, String email, String phoneNumber, String job, String password) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
@@ -61,11 +61,11 @@ public class User {
         this.job = job;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }

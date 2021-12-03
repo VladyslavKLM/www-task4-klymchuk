@@ -40,7 +40,7 @@ public class RegistrationController {
         user.setEmail(email);
         user.setPhoneNumber(phoneCountry + phone);
         user.setJob(job);
-        user.setPassword(password.hashCode());
+        user.setPassword(password);
 
         UserManager manager = new UserManager();
 
